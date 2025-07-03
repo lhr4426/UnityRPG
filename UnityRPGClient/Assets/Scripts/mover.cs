@@ -31,8 +31,13 @@ public class mover : MonoBehaviour
         bool hasHit = Physics.Raycast(ray, out hit); // out 키워드를 사용함으로써 RaycastHit 형태의 결과가 hit에 포함됨. Raycast 함수 자체는 bool을 return.
         if (hasHit)
         {
-            GetComponent<NavMeshAgent>().destination = hit.point;
+            MoveTo(hit.point);
         }
+    }
+
+    public void MoveTo(Vector3 destination)
+    {
+        GetComponent<NavMeshAgent>().destination = destination;
     }
 
     private void UpdateAnimator()
